@@ -1,5 +1,18 @@
 // methods that provide edit & write access to the data
 Meteor.methods({
+  addComment:function(comment) {
+    console.log("add comment method running");
+    console.log(comment);
+    if (this.userId) {
+      // comment.createdOn = new Date();
+      comment.owner = this.userId;
+      return Comments.insert(comment);
+    }
+    else {
+      alert("You need to login");
+    }
+    return;
+  },
   addDoc:function() {
     var doc;
     if (!this.userId) { // not logged in

@@ -9,7 +9,7 @@ Meteor.startup(function () {
 Meteor.publish("documents", function() {
   return Documents.find({
     $or: [ //  or filter
-      {isPrivate:false},
+      {isPrivate:{$ne:true}}, // $ne = not equale to
       {owner:this.userId}
     ]
   });
@@ -17,5 +17,9 @@ Meteor.publish("documents", function() {
 // request server to publish the editing users
 Meteor.publish("editingUsers", function() {
   return EditingUsers.find();
+})
+  
+Meteor.publish("comments", function() {
+  return Comments.find();
 })
   

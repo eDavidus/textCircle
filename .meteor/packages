@@ -24,3 +24,6 @@ check
 standard-minifier-css
 standard-minifier-js
 babrahams:editable-text
+iron:router
+aldeed:autoform
+aldeed:collection2
